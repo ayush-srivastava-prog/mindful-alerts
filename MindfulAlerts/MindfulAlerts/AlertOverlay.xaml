@@ -1,0 +1,71 @@
+<Window x:Class="MindfulAlerts.AlertOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mindful Moment"
+        Width="420" Height="260"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Opacity="0.88">
+
+    <Border x:Name="CardBorder" CornerRadius="16" Background="#CCEEF7EE"
+            BorderBrush="#884CAF50" BorderThickness="2">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20" ShadowDepth="4" Opacity="0.3"/>
+        </Border.Effect>
+
+        <Grid Margin="28">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <TextBlock x:Name="HeaderText" Grid.Row="0" Text="🧘 Mindful Moment"
+                       FontSize="20" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="0,0,0,12"
+                       Foreground="#2E7D32"/>
+
+            <!-- Message -->
+            <TextBlock Grid.Row="1" x:Name="MessageText"
+                       FontSize="15" TextWrapping="Wrap"
+                       HorizontalAlignment="Center" TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="#333" Margin="0,0,0,16"/>
+
+            <!-- Auto-dismiss countdown -->
+            <TextBlock Grid.Row="2" x:Name="DismissCountdown"
+                       FontSize="12" HorizontalAlignment="Center"
+                       Foreground="#888" Margin="0,0,0,10"/>
+
+            <!-- Dismiss button -->
+            <Button x:Name="DismissButton" Grid.Row="3" Content="I'm aware  ✓"
+                    HorizontalAlignment="Center"
+                    Padding="24,8" FontSize="14" Cursor="Hand"
+                    Background="#4CAF50" Foreground="White"
+                    BorderThickness="0"
+                    Click="Dismiss_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="8" Padding="{TemplateBinding Padding}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+    </Border>
+</Window>
